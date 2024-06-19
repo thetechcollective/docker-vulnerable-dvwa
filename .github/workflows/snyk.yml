@@ -13,8 +13,14 @@ jobs:
         image: vulnerables/web-dvwa
         args: --json-file-output=vuln.json --severity-threshold=high
 
-    - name: Upload Snyk scan results
-      uses: actions/upload-artifact@v4
-      with:
-        name: snyk-results
-        path: vuln.json
+    - name: Check for changes
+      run: git status
+
+    - name: Stage changed files
+      run: git add .
+
+    - name: Commit changed files
+      run: git commit -m "Upload Snyk results in project"
+
+    - name: Push changes
+      run: git push
