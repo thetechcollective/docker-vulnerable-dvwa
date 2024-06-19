@@ -11,4 +11,4 @@ jobs:
         SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
       with:
         image: vulnerables/web-dvwa
-        args: --severity-threshold=high
+        args: --file=./Dockerfile --json-file-output=vuln.json --severity-threshold=high
