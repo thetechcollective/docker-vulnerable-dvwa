@@ -12,3 +12,9 @@ jobs:
       with:
         image: vulnerables/web-dvwa
         args: --json-file-output=vuln.json --severity-threshold=high
+
+    - name: Upload Snyk scan results
+      uses: actions/upload-artifact@v4
+      with:
+        name: snyk-results
+        path: vuln.json
